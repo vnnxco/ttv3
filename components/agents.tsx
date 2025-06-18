@@ -161,7 +161,7 @@ export function Agents() {
   })
 
   return (
-    <div className="flex flex-col h-full w-full max-w-full overflow-hidden bg-sidebar">
+    <div className="flex flex-col h-full w-full max-w-full overflow-hidden bg-background">
       {/* Main content area - scrollable */}
       <div className="flex-1 overflow-y-auto min-h-0">
         {/* Header Section */}
