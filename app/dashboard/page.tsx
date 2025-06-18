@@ -37,7 +37,7 @@ export default function Page() {
         onNavigateToProjects={handleNavigateToProjects}
       />
       <SidebarInset className="flex flex-col">
-        <div className="sticky top-0 z-50 bg-background">
+        <div className="sticky top-0 z-50 bg-background rounded-t-xl overflow-hidden">
           <SiteHeader currentView={currentView} />
         </div>
         <div className="flex flex-1 flex-col min-h-0 overflow-hidden">
