@@ -28,30 +28,32 @@ export default function Page() {
     setCurrentView('projects')
   }
   return (
-    <SidebarProvider>
-      <AppSidebar 
-        variant="inset" 
-        currentView={currentView}
-        onNavigate={(view) => setCurrentView(view)}
-        onNavigateToChat={handleNavigateToChat}
-        onNavigateToProjects={handleNavigateToProjects}
-      />
-      <SidebarInset className="flex flex-col h-screen">
-        <div className="sticky top-0 z-50 bg-background rounded-t-xl overflow-hidden">
-          <SiteHeader currentView={currentView} />
-        </div>
-        <div className="flex-1 min-h-0 overflow-hidden">
-          {currentView === 'home' ? (
-            <Homepage onNavigateToChat={handleNavigateToChat} />
-          ) : currentView === 'chat' ? (
-            <AiChat />
-          ) : currentView === 'agents' ? (
-            <Agents />
-          ) : (
-            <Projects />
-          )}
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
+    <div className="h-screen overflow-hidden">
+      <SidebarProvider>
+        <AppSidebar 
+          variant="inset" 
+          currentView={currentView}
+          onNavigate={(view) => setCurrentView(view)}
+          onNavigateToChat={handleNavigateToChat}
+          onNavigateToProjects={handleNavigateToProjects}
+        />
+        <SidebarInset className="flex flex-col h-full">
+          <div className="flex-shrink-0 bg-background rounded-t-xl overflow-hidden">
+            <SiteHeader currentView={currentView} />
+          </div>
+          <div className="flex-1 min-h-0 overflow-hidden">
+            {currentView === 'home' ? (
+              <Homepage onNavigateToChat={handleNavigateToChat} />
+            ) : currentView === 'chat' ? (
+              <AiChat />
+            ) : currentView === 'agents' ? (
+              <Agents />
+            ) : (
+              <Projects />
+            )}
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
+    </div>
   )
 }
