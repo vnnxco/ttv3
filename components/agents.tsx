@@ -161,24 +161,25 @@ export function Agents() {
   })
 
   return (
-    <div className="flex flex-col h-full w-full max-w-full overflow-hidden bg-[hsl(240_5.9%_10%)]">
-      {/* Sticky Header */}
-      <div className="sticky top-0 z-50 bg-[hsl(240_5.9%_10%)] border-b border-[hsl(240_3.7%_15.9%)]">
-        <div className="px-4 sm:px-6 lg:px-8 py-4">
+    <div className="flex flex-col h-full w-full max-w-full overflow-hidden bg-sidebar">
+      {/* Main content area - scrollable */}
+      <div className="flex-1 overflow-y-auto min-h-0">
+        {/* Header Section */}
+        <div className="px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="max-w-7xl mx-auto">
             {/* Top Navigation */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <Button
                     variant="ghost"
-                    className="text-white font-medium hover:bg-[hsl(240_3.7%_15.9%)]"
+                    className="text-sidebar-foreground font-medium hover:bg-sidebar-accent"
                   >
                     Projects
                   </Button>
                   <Button
                     variant="ghost"
-                    className="text-white/60 font-medium hover:bg-[hsl(240_3.7%_15.9%)] hover:text-white"
+                    className="text-sidebar-foreground/60 font-medium hover:bg-sidebar-accent hover:text-sidebar-foreground"
                   >
                     People
                   </Button>
@@ -187,23 +188,23 @@ export function Agents() {
               
               {/* Search Bar */}
               <div className="relative w-full sm:w-96">
-                <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/40" />
+                <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-sidebar-foreground/40" />
                 <Input
                   placeholder="Search across 1M+ independents..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 pr-4 py-3 bg-[hsl(240_3.7%_15.9%)] border-[hsl(240_3.7%_15.9%)] text-white placeholder:text-white/40 focus:ring-2 focus:ring-blue-500 focus:border-transparent rounded-full"
+                  className="pl-12 pr-4 py-3 bg-sidebar-accent border-sidebar-border text-sidebar-foreground placeholder:text-sidebar-foreground/40 focus:ring-2 focus:ring-blue-500 focus:border-transparent rounded-full"
                 />
               </div>
             </div>
 
             {/* Filter Tabs */}
-            <div className="flex items-center gap-4 overflow-x-auto">
+            <div className="flex items-center gap-4 mb-8 overflow-x-auto">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setShowFilters(!showFilters)}
-                className="flex items-center gap-2 bg-[hsl(240_3.7%_15.9%)] border-[hsl(240_3.7%_15.9%)] text-white hover:bg-[hsl(240_3.7%_18%)] flex-shrink-0"
+                className="flex items-center gap-2 bg-sidebar-accent border-sidebar-border text-sidebar-foreground hover:bg-sidebar-accent/80 flex-shrink-0"
               >
                 <FilterIcon className="h-4 w-4" />
                 Filters
@@ -218,8 +219,8 @@ export function Agents() {
                     onClick={() => setActiveTab(tab.name)}
                     className={`whitespace-nowrap flex-shrink-0 ${
                       activeTab === tab.name
-                        ? "bg-white text-black hover:bg-white/90"
-                        : "text-white/60 hover:text-white hover:bg-[hsl(240_3.7%_15.9%)]"
+                        ? "bg-sidebar-foreground text-sidebar hover:bg-sidebar-foreground/90"
+                        : "text-sidebar-foreground/60 hover:text-sidebar-foreground hover:bg-sidebar-accent"
                     }`}
                   >
                     {tab.name}
@@ -227,28 +228,21 @@ export function Agents() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Main content area - scrollable */}
-      <div className="flex-1 overflow-y-auto min-h-0">
-        <div className="px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <div className="max-w-7xl mx-auto">
             {/* Section Headers */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-2">
-                <h2 className="text-xl sm:text-2xl font-bold text-white">
+                <h2 className="text-xl sm:text-2xl font-bold text-sidebar-foreground">
                   Projects we love
                 </h2>
                 <Button
                   variant="ghost"
-                  className="text-white/60 hover:text-white text-sm"
+                  className="text-sidebar-foreground/60 hover:text-sidebar-foreground text-sm"
                 >
                   View more
                 </Button>
               </div>
-              <p className="text-white/60 text-sm sm:text-base">
+              <p className="text-sidebar-foreground/60 text-sm sm:text-base">
                 Standout projects making waves around the web
               </p>
             </div>
@@ -258,7 +252,7 @@ export function Agents() {
               {filteredProjects.slice(0, 4).map((project) => (
                 <Card
                   key={project.id}
-                  className="group bg-[hsl(240_3.7%_15.9%)] border-[hsl(240_3.7%_20%)] hover:border-white/20 transition-all duration-200 cursor-pointer overflow-hidden"
+                  className="group bg-sidebar-accent border-sidebar-border hover:border-sidebar-foreground/20 transition-all duration-200 cursor-pointer overflow-hidden"
                 >
                   {/* Project Preview */}
                   <div className={`${project.preview.bgColor} ${project.preview.textColor} aspect-[4/3] flex items-center justify-center text-4xl sm:text-5xl relative overflow-hidden`}>
@@ -289,11 +283,11 @@ export function Agents() {
                           {project.authorAvatar}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="text-sm font-medium text-white truncate">
+                          <p className="text-sm font-medium text-sidebar-foreground truncate">
                             {project.author}
                           </p>
                           {project.isPro && (
-                            <Badge variant="secondary" className="text-xs mt-1 bg-white/10 text-white/70">
+                            <Badge variant="secondary" className="text-xs mt-1 bg-sidebar-foreground/10 text-sidebar-foreground/70">
                               PRO
                             </Badge>
                           )}
@@ -302,7 +296,7 @@ export function Agents() {
                     </div>
 
                     {/* Stats */}
-                    <div className="flex items-center gap-4 text-xs text-white/60">
+                    <div className="flex items-center gap-4 text-xs text-sidebar-foreground/60">
                       <div className="flex items-center gap-1">
                         <HeartIcon className="h-3 w-3" />
                         <span>{project.likes}</span>
@@ -320,17 +314,17 @@ export function Agents() {
             {/* Second Section */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-2">
-                <h2 className="text-xl sm:text-2xl font-bold text-white">
+                <h2 className="text-xl sm:text-2xl font-bold text-sidebar-foreground">
                   AI agent projects using ⚡ Framer
                 </h2>
                 <Button
                   variant="ghost"
-                  className="text-white/60 hover:text-white text-sm"
+                  className="text-sidebar-foreground/60 hover:text-sidebar-foreground text-sm"
                 >
                   View more
                 </Button>
               </div>
-              <p className="text-white/60 text-sm sm:text-base">
+              <p className="text-sidebar-foreground/60 text-sm sm:text-base">
                 The best modern websites built on the leading web design tool, Framer
               </p>
             </div>
@@ -340,7 +334,7 @@ export function Agents() {
               {filteredProjects.slice(4).map((project) => (
                 <Card
                   key={project.id}
-                  className="group bg-[hsl(240_3.7%_15.9%)] border-[hsl(240_3.7%_20%)] hover:border-white/20 transition-all duration-200 cursor-pointer overflow-hidden"
+                  className="group bg-sidebar-accent border-sidebar-border hover:border-sidebar-foreground/20 transition-all duration-200 cursor-pointer overflow-hidden"
                 >
                   {/* Project Preview */}
                   <div className={`${project.preview.bgColor} ${project.preview.textColor} aspect-[4/3] flex items-center justify-center text-4xl sm:text-5xl relative overflow-hidden`}>
@@ -371,11 +365,11 @@ export function Agents() {
                           {project.authorAvatar}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="text-sm font-medium text-white truncate">
+                          <p className="text-sm font-medium text-sidebar-foreground truncate">
                             {project.author}
                           </p>
                           {project.isPro && (
-                            <Badge variant="secondary" className="text-xs mt-1 bg-white/10 text-white/70">
+                            <Badge variant="secondary" className="text-xs mt-1 bg-sidebar-foreground/10 text-sidebar-foreground/70">
                               PRO
                             </Badge>
                           )}
@@ -384,7 +378,7 @@ export function Agents() {
                     </div>
 
                     {/* Stats */}
-                    <div className="flex items-center gap-4 text-xs text-white/60">
+                    <div className="flex items-center gap-4 text-xs text-sidebar-foreground/60">
                       <div className="flex items-center gap-1">
                         <HeartIcon className="h-3 w-3" />
                         <span>{project.likes}</span>
@@ -402,14 +396,14 @@ export function Agents() {
             {/* Show message if no results */}
             {filteredProjects.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-white/70 mb-4">No projects found matching your criteria.</p>
+                <p className="text-sidebar-foreground/70 mb-4">No projects found matching your criteria.</p>
                 <Button
                   variant="outline"
                   onClick={() => {
                     setSearchTerm("")
                     setActiveTab("Featured")
                   }}
-                  className="bg-[hsl(240_3.7%_15.9%)] border-[hsl(240_3.7%_15.9%)] text-white hover:bg-[hsl(240_3.7%_18%)]"
+                  className="bg-sidebar-accent border-sidebar-border text-sidebar-foreground hover:bg-sidebar-accent/80"
                 >
                   Clear filters
                 </Button>
