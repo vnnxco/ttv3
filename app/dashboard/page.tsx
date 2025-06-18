@@ -36,11 +36,11 @@ export default function Page() {
         onNavigateToChat={handleNavigateToChat}
         onNavigateToProjects={handleNavigateToProjects}
       />
-      <SidebarInset className="flex flex-col">
+      <SidebarInset className="flex flex-col h-screen">
         <div className="sticky top-0 z-50 bg-background rounded-t-xl overflow-hidden">
           <SiteHeader currentView={currentView} />
         </div>
-        <div className="flex flex-1 flex-col min-h-0 overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-hidden">
           {currentView === 'home' ? (
             <Homepage onNavigateToChat={handleNavigateToChat} />
           ) : currentView === 'chat' ? (
