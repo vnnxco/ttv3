@@ -36,8 +36,10 @@ export default function Page() {
         onNavigateToChat={handleNavigateToChat}
         onNavigateToProjects={handleNavigateToProjects}
       />
-      <SidebarInset className="overflow-hidden">
-        <SiteHeader currentView={currentView} />
+      <SidebarInset className="flex flex-col">
+        <div className="sticky top-0 z-50 bg-background">
+          <SiteHeader currentView={currentView} />
+        </div>
         <div className="flex flex-1 flex-col min-h-0 overflow-hidden">
           {currentView === 'home' ? (
             <Homepage onNavigateToChat={handleNavigateToChat} />
