@@ -161,13 +161,14 @@ export function Agents() {
   })
 
   return (
-    <div className="flex flex-col h-full w-full max-w-full bg-background">
-      {/* Sticky Header - Outside of any overflow container */}
-      <div className="sticky top-0 z-50 bg-background border-b border-sidebar-border">
-        <div className="px-4 sm:px-6 lg:px-8 py-4">
+    <div className="flex flex-col h-full w-full max-w-full overflow-hidden bg-background">
+      {/* Main content area - scrollable */}
+      <div className="flex-1 overflow-y-auto min-h-0">
+        {/* Header Section */}
+        <div className="px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="max-w-7xl mx-auto">
             {/* Top Navigation */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <Button
@@ -198,7 +199,7 @@ export function Agents() {
             </div>
 
             {/* Filter Tabs */}
-            <div className="flex items-center gap-4 overflow-x-auto">
+            <div className="flex items-center gap-4 mb-8 overflow-x-auto">
               <Button
                 variant="outline"
                 size="sm"
@@ -227,14 +228,7 @@ export function Agents() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Scrollable Content Area */}
-      <div className="flex-1 overflow-y-auto">
-        <div className="px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <div className="max-w-7xl mx-auto">
             {/* Section Headers */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-2">
